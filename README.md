@@ -28,5 +28,5 @@ You can find all needed dependencies in [pkgsrc](http://www.pkgsrc.org):
  * `devel/git-base`
 
 
-*DISCLAIMER*: the `netbsd-refcard` is in a phase of brainstorming and probably
+**DISCLAIMER**: the `netbsd-refcard` is in a phase of brainstorming and probably
 its contents will be completed rewritten in the next weeks.
