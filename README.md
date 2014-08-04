@@ -16,6 +16,6 @@ building of the PDF.
     $ make clean
     $ make pdf
 
-You can find all needed dependencies in pkgsrc:
+You can find all needed dependencies in [pkgsrc](http://www.pkgsrc.org):
  * `print/latex-mk`
  * `print/tex-leaflet`
