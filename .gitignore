@@ -1,0 +1,10 @@
+*~
+
+# Ignore auxiliary LaTeX files
+*.aux
+*.bbl
+*.blg
+*.log
+*.synctex.gz
+*.toc
+*.toc.old
