@@ -84,10 +84,10 @@
 \verb|export CVS_RSH CVSROOT|
 \item Now we choose a directory for the sources:
 \verb|cd /usr|
-\item To obtain the sources (in this case the 4.0):
-\verb|cvs co -r netbsd-4-0-RELEASE -P src|
-\item To obtain pkgsrc (i.e. the 2008Q1 release):
-\verb|cvs co -r pkgsrc-2008Q1 -P pkgsrc|
+\item To obtain the sources (in this case the 6.1.4):
+\verb|cvs co -r netbsd-6-1-4-RELEASE -P src|
+\item To obtain pkgsrc (i.e. the 2014Q2 release):
+\verb|cvs co -r pkgsrc-2014Q2 -P pkgsrc|
 \end{itemize}
 
 \section{Configuration and useful commands}
@@ -142,13 +142,13 @@ example: \verb|envstat -i 2|
 \item To \emph{kill} a process without knowing its pid you might use: 
 \verb|pkill gimp|
 \item To change the priority of a process you can use \man{renice(8)}: 
-\verb|renice +6 `pgrep vi`|
+\verb|prenice 6 vi|
 \end{itemize}
 
 \subsection{rc.d}
 \subsubsection{rc.conf}
 The synopsis of \url{rc.conf} file is:
-\verb\daemon|option=YES|NO|value\
+\verb\daemon|option=yes|no|value\
 
 \begin{description}
 \item[auto\_ifconfig] automatically starts the network interfaces
@@ -158,7 +158,7 @@ The synopsis of \url{rc.conf} file is:
 \item[dhclient] configure the network using \mbox{DHCP} (\mbox{auto\_ifconfig} and
 \mbox{ifconfig\_if} not needed) \emph{(boolean)}
 \item[hostname] set the hostname, i.e.
-\verb|hostname=bianconiglio|
+\verb|hostname=foobar|
 \item[ifconfig\_if] assigns an IP or other on that network interface, i.e.
 \verb|ifconfig_rtk0="inet 192.168.1.4"|
 \item[mixerctl] automatically starts the mixerctl configuration
@@ -199,13 +199,11 @@ option.
 i.e.:
 \verb|ACCEPTABLE_LICENSES += vim-license|
 \item[CFLAGS] flag passed to the compiler, i.e
-\verb|CFLAGS += -march=pentium3|
+\verb|CFLAGS += -march=pentium-m|
 \item[FAILOVER\_FETCH] if the distfile's checksum doesn't match, download
 again the distfile, \verb|FAILOVER_FETCH = yes|
 \item[FETCH\_CMD] tool to use on the \emph{fetch} phase, i.e.:
-\verb|FETCH_CMD = wget|
-\item[FETCH\_RESUME\_ARGS] useful options for the \emph{resume}, for example
-in the wget case: \verb|FETCH_RESUME_ARGS = -c|
+\verb|FETCH_CMD = curl|
 \item[PKG\_DEFAULT\_OPTIONS] options used by all packages, for example:
 \verb|PKG_DEFAULT_OPTIONS += mmx -nas|
 \item[PKG\_OPTIONS.package] options used by a package, for example in the
@@ -216,17 +214,16 @@ in the wget case: \verb|FETCH_RESUME_ARGS = -c|
 
 \subsection{pkg part}
 \begin{description}
-\item[audit-packages] show all the vulnerabilities of installed packages
-\item[bpm] pseudo-TUI interface useful to install binary packages
-\item[download-vulnerability-list] download the vulnerability list
+\item[pkg\_admin audit] show all the vulnerabilities of installed packages
+\item[pkg\_admin fetch-pkg-vulnerabilities] download the vulnerability list
 \item[pkg\_add] install a package, and all required dependencies, i.e:
-\verb|pkg_add -v mplayer|
+\verb|pkg_add -v firefox|
 \item[pkg\_delete] uninstall a package, i.e. to delete a package and all its
-useless dependencies: \verb|pkg_delete -R mplayer|
+useless dependencies: \verb|pkg_delete -R firefox|
 \item[pkg\_info] display informations about a package, for example:
-\verb|pkg_info mplayer|
+\verb|pkg_info firefox|
 \item[pkg\_tarup] create from installed packages in our \mbox{LOCALBASE} a .tgz binary
-package, for example: \verb|pkg_tarup -a mplayer|
+package, for example: \verb|pkg_tarup -a firefox|
 \end{description}
 
 \subsection{src part}
